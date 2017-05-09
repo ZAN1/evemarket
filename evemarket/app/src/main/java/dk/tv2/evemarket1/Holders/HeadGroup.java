@@ -7,19 +7,10 @@ import java.util.List;
  */
 
 public class HeadGroup {
-    private String name;
-    private String id;
-    private List<HeadMid> parentGroup;
 
-    public String getName() {
-        return name;
-    }
+    private List<HeadMid> items;
 
-    public String getId() {
-        return id;
-    }
-
-    public List<HeadMid> getParentGroup() {
-        return parentGroup;
+    public List<HeadMid> getItems() {
+        return items;
     }
 }

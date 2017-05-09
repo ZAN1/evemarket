@@ -1,6 +1,6 @@
 package dk.tv2.evemarket1.Interface;
 
-import dk.tv2.evemarket1.Holders.HeadMid;
+import dk.tv2.evemarket1.Holders.HeadGroup;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -10,8 +10,8 @@ import retrofit2.http.GET;
 
 public interface GetQuery {
 
-@GET("/market/groups")
-    Call<HeadMid> HeadMidListCall();
+@GET("/market/groups/")
+    Call<HeadGroup> HeadMidListCall();
 
 
 }

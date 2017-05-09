@@ -5,6 +5,18 @@ package dk.tv2.evemarket1.Holders;
  */
 
 public class HeadMid {
+    private String name;
+    private HeadParent parentGroup;
+
+    public HeadParent getParentGroup() {
+        return parentGroup;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+
 
     private String id;
 
