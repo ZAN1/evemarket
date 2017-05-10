@@ -1,14 +1,17 @@
 package dk.tv2.evemarket1.Holders;
 
+import java.util.List;
+
 /**
  * Created by cfr on 09-05-2017.
  */
 
 public class HeadMid {
     private String name;
-    private HeadParent parentGroup;
+   // private HeadParent parentGroup;
+    private List<HeadParent> parentGroup;
 
-    public HeadParent getParentGroup() {
+    public List<HeadParent> getParentGroup() {
         return parentGroup;
     }
 

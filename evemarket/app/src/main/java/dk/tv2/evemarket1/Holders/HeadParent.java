@@ -6,6 +6,11 @@ package dk.tv2.evemarket1.Holders;
 
 public class HeadParent {
     private String id;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
 
     public String getId() {
         return id;

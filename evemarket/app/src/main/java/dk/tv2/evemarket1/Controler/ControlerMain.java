@@ -4,7 +4,9 @@ import android.util.Log;
 
 import dk.tv2.evemarket1.Holders.HeadGroup;
 import dk.tv2.evemarket1.Holders.HeadMid;
+import dk.tv2.evemarket1.Holders.HeadParent;
 import dk.tv2.evemarket1.Interface.GetQuery;
+import dk.tv2.evemarket1.MainActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -17,6 +19,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ControlerMain {
 
+
+    private static final String log = MainActivity.class.getSimpleName();
     GetQuery mservice;
 
     public interface HeadGroupCallBack{
@@ -64,8 +68,15 @@ public class ControlerMain {
 
                 for(HeadMid hg : headgroup.getItems()){
 
-                    Log.d("boom","name: " + hg.getName());
+                    Log.d(log,"name: " + hg.getName());
+                    Log.d(log, "id" + hg.getId());
+                   if(hg.getParentGroup() != null) {
 
+                       for(HeadParent hp : hg.getParentGroup() ) {
+                            Log.d(log, "id" + hp.getName());
+                            Log.d(log, "id" + hp.getId());
+                       }
+                    }
                 }
 
             }
