@@ -4,7 +4,6 @@ import android.util.Log;
 
 import dk.tv2.evemarket1.Holders.HeadGroup;
 import dk.tv2.evemarket1.Holders.HeadMid;
-import dk.tv2.evemarket1.Holders.HeadParent;
 import dk.tv2.evemarket1.Interface.GetQuery;
 import dk.tv2.evemarket1.MainActivity;
 import retrofit2.Call;
@@ -60,26 +59,33 @@ public class ControlerMain {
 
         headGroups.enqueue(new Callback<HeadGroup>() {
             @Override
-            public void onResponse(Call<HeadGroup> call, Response<HeadGroup> response) {
+            public void onResponse(Call <HeadGroup> call, Response <HeadGroup> response) {
 
                 HeadGroup headgroup = response.body();
 
                 headCallBack.haveHead(headgroup);
 
                 for(HeadMid hg : headgroup.getItems()){
-
-                    Log.d(log,"name: " + hg.getName());
+        
+                    Log.d(log, "name: " + hg.getName());
                     Log.d(log, "id" + hg.getId());
-                   if(hg.getParentGroup() != null) {
 
-                       for(HeadParent hp : hg.getParentGroup() ) {
-                            Log.d(log, "id" + hp.getName());
-                            Log.d(log, "id" + hp.getId());
-                       }
-                    }
+                        if(hg.getParentGroup() != null) {
+
+                            // Log.d(log, "name" + hg.getParentGroup().getName());
+                            Log.d(log, "id: " + hg.getParentGroup().getId());
+                        }
                 }
 
             }
+
+//            @Override
+//            public void onFailure(Call<List<HeadGroup>> call, Throwable t) {
+//
+//                Log.e("ERROR","no show: " , t);
+////                headCallBack.Error("no text..: ", t);
+//
+//            }
 
             @Override
             public void onFailure(Call<HeadGroup> call, Throwable t) {
