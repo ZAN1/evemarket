@@ -23,8 +23,11 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new AdapterMain(this);
 
+        cycelmain.setAdapter(adapter);
+
         ControlerMain controlMain = new ControlerMain();
 
+        controlMain.
 
     }
 }

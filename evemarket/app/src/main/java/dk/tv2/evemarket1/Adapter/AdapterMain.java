@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import dk.tv2.evemarket1.Holders.HeadGroup;
+import dk.tv2.evemarket1.Holders.HeadMid;
 import dk.tv2.evemarket1.Interface.GetQuery;
 import dk.tv2.evemarket1.R;
 
@@ -37,7 +38,23 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.holder>{
     }
 
 
+    public holder onCreateViewHolder(V){
 
+
+
+    }
+
+
+
+
+    public int getItemCount(){
+
+        if(headGroup != null && headGroup.getItems() != null) {
+
+            return headGroup.getItems().size();
+        }
+        return 0;
+    }
 
     class holder extends RecyclerView.ViewHolder{
 
@@ -47,7 +64,7 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.holder>{
 
 
             super(head);
-            name = (TextView) head.findViewById(R.id.headname)
+            name = (TextView) head.findViewById(R.id.headname);
 
 
         }
