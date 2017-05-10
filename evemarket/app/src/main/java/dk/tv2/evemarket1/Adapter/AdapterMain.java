@@ -4,11 +4,11 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import dk.tv2.evemarket1.Holders.HeadGroup;
 import dk.tv2.evemarket1.Holders.HeadMid;
-import dk.tv2.evemarket1.Interface.GetQuery;
 import dk.tv2.evemarket1.R;
 
 /**
@@ -37,9 +37,20 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.holder>{
 
     }
 
+    @Override
+    public holder onCreateViewHolder(ViewGroup parent , int viewType){
 
-    public holder onCreateViewHolder(V){
+        View view = inflater.inflate(R.layout.headgrouplist, parent, false);
 
+                return new holder(view);
+
+    }
+    @Override
+
+    public void onBindViewHolder(holder holder , final int position){
+
+        HeadMid item = headGroup.getItems().get(position);
+        holder.name.setText(String.valueOf(item.getName()));
 
 
     }

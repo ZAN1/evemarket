@@ -1,12 +1,13 @@
 package dk.tv2.evemarket1;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import dk.tv2.evemarket1.Adapter.AdapterMain;
 import dk.tv2.evemarket1.Controler.ControlerMain;
+import dk.tv2.evemarket1.Holders.HeadGroup;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,9 +18,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        cycelmain = (RecyclerView) findViewById(R.id.cycelheadgroup);
+        cycelmain = (RecyclerView) findViewById(R.id.cyclerHeadGroup);
 
-        cycelmain.setLayoutManager(LinearLayoutManager(this));
+        cycelmain.setLayoutManager(new LinearLayoutManager(this));
 
         adapter = new AdapterMain(this);
 
@@ -27,7 +28,26 @@ public class MainActivity extends AppCompatActivity {
 
         ControlerMain controlMain = new ControlerMain();
 
-        controlMain.
+        controlMain.printHead(new ControlerMain.HeadGroupCallBack(){
+
+            @Override
+            public void haveHead(HeadGroup data){
+
+                adapter.updateadapter(data);
+
+            }
+
+            @Override
+            public void Error(String error, Throwable t) {
+
+            }
+
+
+
+
+
+        });
+
 
     }
 }

@@ -48,7 +48,7 @@ public class ControlerMain {
         
   //  }
     
-    private void printHead(final HeadGroupCallBack headCallBack){
+    public void printHead(final HeadGroupCallBack headCallBack){
 
 
 
