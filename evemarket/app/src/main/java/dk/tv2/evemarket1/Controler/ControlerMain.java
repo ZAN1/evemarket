@@ -69,7 +69,8 @@ public class ControlerMain {
                 //headCallBack.haveHead(headgroup);
 
                 List<HeadMid > cata = new ArrayList<>();
-                List<String> macthid = new ArrayList<>();
+                List<HeadMid> matchid = new ArrayList<>();
+
 
                 for(HeadMid hg : headgroup.getItems()){
 
@@ -78,43 +79,61 @@ public class ControlerMain {
 
                     if(hg.getParentGroup() == null  && hg.getName() != null){
 
-//                        Log.d(log, "name: " + hg.getName());
-//                        Log.d(log, "id" + hg.getId());
 
 
                         cata.add(hg);
                         Log.d(log,"new!!!!" + hg.getName());
                     }
+                    else{
 
-//                    if(hg.getParentGroup() != null && hg.getParentGroup().getId() != null && hg.getId() != null && hg.getId().equals(hg.getParentGroup().getId())) {
-//
-//
-//
-//
-//
-//
-//                            macthid.add(hg.getName());
-//                            Log.i(log, "Statr#############");
-//                            Log.d(log, "only parent name" + hg.getName());
-//
-////                            Log.i(log,"parent");
-////                            Log.d(log, "id: " + hg.getParentGroup().getId());
-//
-//
-//                    }
+
+
+
+
+                        matchid.add(hg);
+
+                    }
+
 
 
                 }
 
-                headCallBack.haveHead(cata);
-
-//                for (HeadMid hg : cata) {
+//                for(int i = 0; i < cata.size(); i++) {
+//                    HeadMid hg = cata.get(i);
 //
+//                    cata.remove(hg);
+//                }
 //
-//
+//                for (int j = cata.size() -1; j >= 0; j--) {
 //
 //                }
+//
+//                ListIterator<HeadMid> iter = cata.listIterator();
+//                while (iter.hasNext()) {
+//                    HeadMid hg = iter.next();
+//                    iter.remove();
+//                }
 
+                headCallBack.haveHead(cata);
+
+                for (HeadMid hg : cata) {
+
+//
+
+                    for (HeadMid hm : matchid) {
+
+                        if(hm.getParentGroup().getId_str().equals(hg.getId_str())){
+
+                            hg.addCheilsGroupe(hm);
+                            Log.i(log, "fghfgh       " + hg.getName() + "  " +  hm.getName());
+
+                        }
+
+                    }
+
+
+
+                }
 
 
 
@@ -123,13 +142,6 @@ public class ControlerMain {
 
             }
 
-//            @Override
-//            public void onFailure(Call<List<HeadGroup>> call, Throwable t) {
-//
-//                Log.e("ERROR","no show: " , t);
-////                headCallBack.Error("no text..: ", t);
-//
-//            }
 
             @Override
             public void onFailure(Call<HeadGroup> call, Throwable t) {
