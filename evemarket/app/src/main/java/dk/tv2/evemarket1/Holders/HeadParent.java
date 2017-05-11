@@ -5,12 +5,12 @@ package dk.tv2.evemarket1.Holders;
  */
 
 public class HeadParent {
-    private String id;
+    private Integer id;
 
 
 
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 }

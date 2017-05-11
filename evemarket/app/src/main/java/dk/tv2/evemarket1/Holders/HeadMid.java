@@ -7,11 +7,7 @@ package dk.tv2.evemarket1.Holders;
 public class HeadMid {
     private String name;
     private HeadParent parentGroup;
-   // private List<HeadParent> parentGroup;
-
-//    public List<HeadParent> getParentGroup() {
-//        return parentGroup;
-//    }
+    private Integer id;
 
     public HeadParent getParentGroup() {
         return parentGroup;
@@ -23,9 +19,9 @@ public class HeadMid {
 
 
 
-    private String id;
 
-    public String getId() {
+
+    public Integer getId() {
         return id;
     }
 }

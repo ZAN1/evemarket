@@ -5,9 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import java.util.List;
+
 import dk.tv2.evemarket1.Adapter.AdapterMain;
 import dk.tv2.evemarket1.Controler.ControlerMain;
-import dk.tv2.evemarket1.Holders.HeadGroup;
+import dk.tv2.evemarket1.Holders.HeadMid;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         controlMain.printHead(new ControlerMain.HeadGroupCallBack(){
 
             @Override
-            public void haveHead(HeadGroup data){
+            public void haveHead(List<HeadMid> data){
 
                 adapter.updateadapter(data);
 

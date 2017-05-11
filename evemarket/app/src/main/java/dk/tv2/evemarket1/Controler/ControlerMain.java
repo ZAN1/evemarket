@@ -2,6 +2,9 @@ package dk.tv2.evemarket1.Controler;
 
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dk.tv2.evemarket1.Holders.HeadGroup;
 import dk.tv2.evemarket1.Holders.HeadMid;
 import dk.tv2.evemarket1.Interface.GetQuery;
@@ -24,7 +27,7 @@ public class ControlerMain {
 
     public interface HeadGroupCallBack{
 
-        void haveHead(HeadGroup headdata);
+        void haveHead(List<HeadMid> headdata);
         void Error(String error , Throwable t);
 
     }
@@ -63,19 +66,60 @@ public class ControlerMain {
 
                 HeadGroup headgroup = response.body();
 
-                headCallBack.haveHead(headgroup);
+                //headCallBack.haveHead(headgroup);
+
+                List<HeadMid > cata = new ArrayList<>();
+                List<String> macthid = new ArrayList<>();
 
                 for(HeadMid hg : headgroup.getItems()){
-        
-                    Log.d(log, "name: " + hg.getName());
-                    Log.d(log, "id" + hg.getId());
 
-                        if(hg.getParentGroup() != null) {
 
-                            // Log.d(log, "name" + hg.getParentGroup().getName());
-                            Log.d(log, "id: " + hg.getParentGroup().getId());
-                        }
+
+
+                    if(hg.getParentGroup() == null  && hg.getName() != null){
+
+//                        Log.d(log, "name: " + hg.getName());
+//                        Log.d(log, "id" + hg.getId());
+
+
+                        cata.add(hg);
+                        Log.d(log,"new!!!!" + hg.getName());
+                    }
+
+//                    if(hg.getParentGroup() != null && hg.getParentGroup().getId() != null && hg.getId() != null && hg.getId().equals(hg.getParentGroup().getId())) {
+//
+//
+//
+//
+//
+//
+//                            macthid.add(hg.getName());
+//                            Log.i(log, "Statr#############");
+//                            Log.d(log, "only parent name" + hg.getName());
+//
+////                            Log.i(log,"parent");
+////                            Log.d(log, "id: " + hg.getParentGroup().getId());
+//
+//
+//                    }
+
+
                 }
+
+                headCallBack.haveHead(cata);
+
+//                for (HeadMid hg : cata) {
+//
+//
+//
+//
+//                }
+
+
+
+
+
+
 
             }
 

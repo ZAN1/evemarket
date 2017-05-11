@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import dk.tv2.evemarket1.Holders.HeadGroup;
+import java.util.ArrayList;
+import java.util.List;
+
 import dk.tv2.evemarket1.Holders.HeadMid;
 import dk.tv2.evemarket1.R;
 
@@ -17,7 +19,9 @@ import dk.tv2.evemarket1.R;
 
 public class AdapterMain extends RecyclerView.Adapter<AdapterMain.holder>{
 
-    private HeadGroup headGroup;
+
+    private List<HeadMid> headMidList = new ArrayList<>();
+    //private HeadGroup headGroup;
     private LayoutInflater inflater;
     private Context context;
 
@@ -30,9 +34,10 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.holder>{
 
     // adapter updater
 
-    public void updateadapter(HeadGroup items){
+    public void updateadapter(List<HeadMid> items){
 
-        this.headGroup = items;
+        this.headMidList = items;
+
         notifyDataSetChanged();
 
     }
@@ -49,8 +54,9 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.holder>{
 
     public void onBindViewHolder(holder holder , final int position){
 
-        HeadMid item = headGroup.getItems().get(position);
-        holder.name.setText(String.valueOf(item.getName()));
+        HeadMid item = headMidList.get(position);
+
+            holder.name.setText(String.valueOf(item.getName()));
 
 
     }
@@ -60,11 +66,13 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.holder>{
 
     public int getItemCount(){
 
-        if(headGroup != null && headGroup.getItems() != null) {
 
-            return headGroup.getItems().size();
-        }
-        return 0;
+
+            return headMidList.size();
+
+
+
+
     }
 
     class holder extends RecyclerView.ViewHolder{
@@ -75,7 +83,8 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.holder>{
 
 
             super(head);
-            name = (TextView) head.findViewById(R.id.headname);
+
+                name = (TextView) head.findViewById(R.id.headname);
 
 
         }
