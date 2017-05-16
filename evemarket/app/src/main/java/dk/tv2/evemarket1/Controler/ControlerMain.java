@@ -68,80 +68,93 @@ public class ControlerMain {
 
                 //headCallBack.haveHead(headgroup);
 
-                List<HeadMid > cata = new ArrayList<>();
-                List<HeadMid> matchid = new ArrayList<>();
+               // List<HeadMid > cata = new ArrayList<>();
+               // List<HeadMid> matchid = new ArrayList<>();
+               // List<HeadMid> cheild = new ArrayList<>();
+               // HeadGroup hent =  HeadGroup.
 
 
-                for(HeadMid hg : headgroup.getItems()){
-
-
-
-
-                    if(hg.getParentGroup() == null  && hg.getName() != null){
-
-
-
-                        cata.add(hg);
-                        Log.d(log,"new!!!!" + hg.getName());
-                    }
-                    else{
-
-
-
-
-
-                        matchid.add(hg);
-
-                    }
-
-
-
-                }
-
-//                for(int i = 0; i < cata.size(); i++) {
-//                    HeadMid hg = cata.get(i);
-//
-//                    cata.remove(hg);
-//                }
-//
-//                for (int j = cata.size() -1; j >= 0; j--) {
-//
-//                }
-//
-//                ListIterator<HeadMid> iter = cata.listIterator();
-//                while (iter.hasNext()) {
-//                    HeadMid hg = iter.next();
-//                    iter.remove();
-//                }
-
-                headCallBack.haveHead(cata);
-
-                for (HeadMid hg : cata) {
+               // for (HeadGroup hg : ){}
 
 //
+               // HeadMid hansen = market();
 
-                    for (HeadMid hm : matchid) {
+              //  HeadGroup headGroup1 = new HeadGroup();
+               // headCallBack.haveHead(cata);
+                HeadMid market = market1(headgroup);
 
-                        if(hm.getParentGroup().getId_str().equals(hg.getId_str())){
+                HeadMid get = market.getHans().get(1);
 
-                            hg.addCheilsGroupe(hm);
-                            Log.i(log, "fghfgh       " + hg.getName() + "  " +  hm.getName());
+               // headCallBack.haveHead(cata);
+            for(HeadMid bla : get.getHeadmid() ){
+                        Log.i(log,"hovde" + bla.getName());
+                    if(bla.getHans() != null){
+
+                        for(HeadMid sub : market.getHeadmid()){
+                            Log.d(log ,"under      " + sub.getName());
+
 
                         }
 
                     }
 
+            }
 
 
-                }
-
-
-
+              //  headCallBack.haveHead(cata);
 
 
 
             }
+            public HeadMid market1 (HeadGroup result){
+               HeadMid hansen = new HeadMid();
+                List<HeadMid> hans = new ArrayList<HeadMid>();
+                for (HeadMid hg : result.getItems()) {
 
+                    if(hg.getParentGroup() == null  && hg.getName() != null){
+
+                        HeadMid under = new HeadMid();
+                        under.setId(hg.getId());
+                        under.setName(hg.getName());
+                        under.setHans(hans1(result.getItems(), under));
+
+
+                       // Log.d(log,"new!!!!" + hg.getName());
+
+
+                    }
+
+
+
+                }
+                hansen.setHans(hans);
+                return hansen;
+
+            }
+
+            public List<HeadMid> hans1(List<HeadMid>items, HeadMid hans ){
+                List<HeadMid> cata = new ArrayList<HeadMid>();
+
+
+                for (HeadMid hg1 : items) {
+
+
+                    if(hg1.getParentGroup() != null) {
+                        if(hg1.getParentGroup().getId() == hans.getId())
+                        {
+                            HeadMid marketcata = new HeadMid();
+                            marketcata.setId(hg1.getId());
+                            marketcata.setName(hg1.getName());
+                            cata.add(marketcata);
+                        }
+                    }
+                }
+
+
+
+            return cata;
+
+            }
 
             @Override
             public void onFailure(Call<HeadGroup> call, Throwable t) {
@@ -152,8 +165,7 @@ public class ControlerMain {
         });
         
     }
-    
-    
+
 
 
 
